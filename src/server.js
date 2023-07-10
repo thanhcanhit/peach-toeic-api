@@ -3,12 +3,21 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import router from "./routers/index.js";
+import Topic from "./models/Topic.js";
+import Vocabulary from "./models/Vocabulary.js";
+
+// Path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Environment variables
 dotenv.config();
 
+// Connect database
 (async () => {
 	try {
 		await mongoose.connect(process.env.DATABASE_URL);
@@ -21,7 +30,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
+app.use(express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname, "public"));
 app.use(morgan("common"));
 app.use(cors());
 

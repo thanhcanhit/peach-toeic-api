@@ -7,6 +7,7 @@ const vocabularySchema = new mongoose.Schema({
 	explain: { type: String },
 	meaning: { type: String },
 	example: { english: String, vietnamse: String },
+	imgPath:{ type: String},
 	topic: { type: Number, ref: "Topic" },
 });
 
