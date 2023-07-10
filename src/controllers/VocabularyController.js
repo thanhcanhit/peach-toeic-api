@@ -1,9 +1,13 @@
 import Vocabulary from "../models/Vocabulary.js";
 
 class VocabularyController {
-	// [GET] /api/v1/vocabulary?topic=<topicId>
+	// [GET] /api/v1/vocabulary
+	// ?topic=<topicId>&limit=<limitQuantity>&skip=<skipQuantity>
 	async get(req, res, next) {
 		const topicId = req.query.topic;
+		const limitQuantity = req.query.limit;
+		const skipQuantity = req.query.skip;
+
 		const queryObject = {};
 
 		if (topicId) {
@@ -11,7 +15,9 @@ class VocabularyController {
 		}
 
 		try {
-			const vocabularies = await Vocabulary.find(queryObject);
+			const vocabularies = await Vocabulary.find(queryObject)
+				.skip(skipQuantity)
+				.limit(limitQuantity);
 			res.json(vocabularies);
 		} catch (err) {
 			next(err);
