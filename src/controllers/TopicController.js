@@ -2,9 +2,12 @@ const Topic = require("../models/Topic.js");
 
 class TopicController {
 	// [GET] /api/v1/topic
+	// ?limit=<number>&offset=number
 	async get(req, res, next) {
 		try {
-			const topics = await Topic.find({});
+			const { limit, offset } = req.query;
+
+			const topics = await Topic.find({}).skip(offset).limit(limit);
 			res.json(topics);
 		} catch (err) {
 			next(err);

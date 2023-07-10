@@ -2,22 +2,20 @@ const Vocabulary = require("../models/Vocabulary.js");
 
 class VocabularyController {
 	// [GET] /api/v1/vocabulary
-	// ?topic=<topicId>&limit=<limitQuantity>&skip=<skipQuantity>
+	// ?topic=<number>&limit=<number>&offset=<number>
 	async get(req, res, next) {
-		const topicId = req.query.topic;
-		const limitQuantity = req.query.limit;
-		const skipQuantity = req.query.skip;
+		const { topic, limit, offset } = req.query;
 
 		const queryObject = {};
 
-		if (topicId) {
-			queryObject.topic = topicId;
+		if (topic) {
+			queryObject.topic = topic;
 		}
 
 		try {
 			const vocabularies = await Vocabulary.find(queryObject)
-				.skip(skipQuantity)
-				.limit(limitQuantity);
+				.skip(offset)
+				.limit(limit);
 			res.json(vocabularies);
 		} catch (err) {
 			next(err);
@@ -37,4 +35,4 @@ class VocabularyController {
 	}
 }
 
-module.exports =  VocabularyController;
+module.exports = VocabularyController;
