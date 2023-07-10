@@ -1,4 +1,4 @@
-import Vocabulary from "../models/Vocabulary.js";
+const Vocabulary = require("../models/Vocabulary.js");
 
 class VocabularyController {
 	// [GET] /api/v1/vocabulary
@@ -37,4 +37,4 @@ class VocabularyController {
 	}
 }
 
-export default VocabularyController;
+module.exports =  VocabularyController;

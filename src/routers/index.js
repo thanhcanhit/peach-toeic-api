@@ -1,9 +1,9 @@
-import topicRouter from "./topic.js";
-import vocabularyRouter from "./vocabulary.js";
+const topicRouter = require("./topic.js");
+const vocabularyRouter = require("./vocabulary.js");
 
 function router(app) {
 	app.use("/api/v1/vocabulary", vocabularyRouter);
 	app.use("/api/v1/topic", topicRouter);
 }
 
-export default router;
+module.exports =  router;

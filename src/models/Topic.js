@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const topicSchema = new mongoose.Schema({
 	_id: { type: Number, required: true },
@@ -7,4 +7,4 @@ const topicSchema = new mongoose.Schema({
 	imgPath:{ type: String},
 });
 
-export default mongoose.model("Topic", topicSchema);
+module.exports =  mongoose.model("Topic", topicSchema);

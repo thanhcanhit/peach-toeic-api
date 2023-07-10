@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+const mongoose = require("mongoose");
 
 const vocabularySchema = new mongoose.Schema({
 	_id: { type: Number, required: true },
@@ -7,9 +7,9 @@ const vocabularySchema = new mongoose.Schema({
 	explain: { type: String },
 	meaning: { type: String },
 	example: { english: String, vietnamse: String },
-	imgPath:{ type: String},
-	soundPath:{ type: String},
+	imgPath: { type: String },
+	soundPath: { type: String },
 	topic: { type: Number, ref: "Topic" },
 });
 
-export default mongoose.model("Vocabulary", vocabularySchema);
+module.exports =  mongoose.model("Vocabulary", vocabularySchema);

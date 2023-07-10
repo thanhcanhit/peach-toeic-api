@@ -1,18 +1,13 @@
-import express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import cors from "cors";
-import mongoose from "mongoose";
-import path from "path";
-import { fileURLToPath } from "url";
+const express = require("express");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const path = require("path");
 
-import router from "./routers/index.js";
-import Topic from "./models/Topic.js";
-import Vocabulary from "./models/Vocabulary.js";
+const router = require("./routers/index.js");
 
 // Path
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Environment variables
 dotenv.config();

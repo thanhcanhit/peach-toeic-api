@@ -1,4 +1,4 @@
-import Topic from "../models/Topic.js";
+const Topic = require("../models/Topic.js");
 
 class TopicController {
 	// [GET] /api/v1/topic
@@ -22,4 +22,4 @@ class TopicController {
 	}
 }
 
-export default TopicController;
+module.exports = TopicController;
