@@ -27,6 +27,22 @@ dotenv.config();
 	}
 })();
 
+function transformName(name) {
+	name = name.trim();
+	name = name.toLowerCase();
+	name = name.split(" ");
+	return `${name.join("_")}`;
+}
+
+(async() => {
+	const topics = await Topic.find({});
+	for (const topic of topics) {
+		const transName = transformName(topic.name);
+		const imgPath = `/images/${transName}/${transName}.jpg`;
+		await Topic.updateOne({_id: topic._id}, {$set: {imgPath: imgPath}})
+	}
+})()
+
 const app = express();
 const port = process.env.PORT || 3000;
 
